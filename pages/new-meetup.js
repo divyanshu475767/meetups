@@ -1,18 +1,26 @@
 import NewMeetupForm from "@/components/meetups/NewMeetupForm";
+import { useRouter } from "next/router";
 
+function newMeetupPage() {
 
+    const router = useRouter();
 
-function newMeetupPage(){
+  async function addMeetupHandler(enteredMeetupData) {
+    const response = await fetch("/api/new-meetup", {
+      method: "POST",
+      body: JSON.stringify(enteredMeetupData),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
 
-    function addMeetupHandler(enteredMeetupData){
-        
-        alert(enteredMeetupData);
-    }
+    const data = await response.json();
 
+    console.log(data);
+    router.push('/');
+  }
 
-
-    return <NewMeetupForm onAddMeetup={addMeetupHandler}/>
-
+  return <NewMeetupForm onAddMeetup={addMeetupHandler} />;
 }
 
 export default newMeetupPage;

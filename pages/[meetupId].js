@@ -24,6 +24,7 @@ export async function getStaticPaths() {
   };
 }
 
+
 export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
 
@@ -44,5 +45,9 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+
+
+
 
 export default MeetupDetails;
